@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../booking';
+import { Bookings } from '../mock-bookings';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-booking',
@@ -8,9 +10,7 @@ import { Booking } from '../booking';
 })
 export class CreateBookingComponent implements OnInit {
 
-  constructor(){
-
-  }
+  constructor(private router: Router){ }
 
   booking: Booking = {
     id: 100,
@@ -23,5 +23,12 @@ export class CreateBookingComponent implements OnInit {
   ngOnInit(): void {
       
   }
+
+  save(): void {
+    Bookings.push(this.booking)
+    this.router.navigate(["bookings"])
+  }
+
+ 
 
 }
