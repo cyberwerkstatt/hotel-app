@@ -16,8 +16,8 @@ export class CreateBookingComponent implements OnInit {
     id: 100,
     name: "Your Name",
     roomNumber: 110,
-    startDate: new Date(),
-    endDate: new Date()
+    startDate: new Date(), 
+    endDate: new Date() 
   }
 
   ngOnInit(): void {

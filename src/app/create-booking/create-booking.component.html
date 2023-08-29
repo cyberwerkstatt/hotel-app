@@ -13,12 +13,12 @@
                 <div class="col">
                     <!-- ID -->
                     <label class="form-label">ID</label>
-                    <input class="form-control" type="text">
+                    <input type="number" [(ngModel)]="booking.id" name="Id" class="form-control" type="text">
                 </div>
                 <div class="col">
                     <!-- RoomNumber -->
                     <label class="form-label">Roomnumber</label>
-                    <input class="form-control" type="text">
+                    <input type="number" [(ngModel)]="booking.roomNumber" name="roomnumber" class="form-control" type="text">
                 </div>
 
             </div>
@@ -27,7 +27,7 @@
                 <div class="col-6">
                     <!-- Name -->
                     <label class="form-label">Guest-Name</label>
-                    <input class="form-control" type="text">
+                    <input type="text" [(ngModel)]="booking.name" name="guest" class="form-control" type="text">
                 </div>
             </div>
 
@@ -35,13 +35,13 @@
                 <div class="col">
                     <!-- StartDate -->
                     <label class="form-label">Startdate</label>
-                    <input class="form-control" type="text">
+                    <input type="date" [(ngModel)]="booking.startDate" name="startdate" class="form-control" type="text">
 
                 </div>
                 <div class="col">
                     <!-- EndDate -->
                     <label class="form-label">Enddate</label>
-                    <input class="form-control" type="text">
+                    <input type="date" [(ngModel)]="booking.endDate" name="enddate" class="form-control" type="text">
                 </div>
             </div>
         </form>
