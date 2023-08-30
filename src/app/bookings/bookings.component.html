@@ -1,7 +1,7 @@
 <h3 class="text-center pt-4 pb-4">{{ welcomeText }}</h3>
 
-<div class="list-group mb-2" *ngFor="let booking of bookings">
-    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+<div class="list-group mb-2 hover-container" *ngFor="let booking of bookings">
+    <a routerLink="/edit/{{booking.id}}" class="list-group-item list-group-item-action" aria-current="true">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Name: {{booking.name}}</h5>
         <small>Buchungsnummer: {{booking.id}}</small>
