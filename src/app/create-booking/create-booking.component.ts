@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../booking';
-import { Bookings } from '../mock-bookings';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BookingService } from '../booking.service';
 
 @Component({
   selector: 'app-create-booking',
@@ -10,7 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CreateBookingComponent implements OnInit {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, 
+    private activatedRoute: ActivatedRoute, 
+    private bookingService : BookingService) { }
 
   booking: Booking = {
     id: 100,
@@ -23,7 +25,7 @@ export class CreateBookingComponent implements OnInit {
   ngOnInit(): void {
     if (this.router.url != "/create") {
       let id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
-      let bookingById = Bookings.find(x => x.id == id)!;
+      let bookingById = this.bookingService.getBookingById(id)
       this.booking = bookingById
     }
 
@@ -31,21 +33,17 @@ export class CreateBookingComponent implements OnInit {
   }
 
   save(): void {
-    let bookingById = Bookings.find(x => x.id == this.booking.id);
+    let bookingById = this.bookingService.getBookingById(this.booking.id)
     if (bookingById == null || bookingById == undefined) {
-      Bookings.push(this.booking)
+      this.bookingService.addBooking(this.booking);
     } else {
-      bookingById = this.booking;
+      this.bookingService.updateBooking(this.booking);
     }
     this.router.navigate(["bookings"])
 
   }
 
-  deleteBooking(){
-    let bookingById = Bookings.findIndex(x => x.id == this.booking.id)!;
-    Bookings.splice(bookingById,1);
-    this.router.navigate(["bookings"])  
-  }
+ 
 
   dateChanged(event: Event, isStart: Boolean) {
     let val = (event.target as HTMLInputElement).value;
